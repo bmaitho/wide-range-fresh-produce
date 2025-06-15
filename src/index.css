@@ -1,13 +1,90 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --clr-primary:   #2f4f2f;      /* deep green */
+  --clr-secondary: #8b4513;      /* brown */
+  --clr-accent:    #f9f5f1;      /* light cream */
+  --clr-link:      #556b2f;      /* muted olive */
+  --ff-heading:    'Merriweather', serif;
+  --ff-body:       'Open Sans', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: var(--ff-body);
+  background: var(--clr-accent);
+  color: #333;
+}
+
+nav {
+  background: var(--clr-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+nav .container {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+}
+.nav-link {
+  color: var(--clr-link);
+  margin-left: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-link:hover {
+  color: #fff;
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--clr-secondary);
+}
+
+.hero-section {
+  background: url('/home/brian/wide-range-fresh-produce/src/assets/chili-hero.jpg') center/cover no-repeat;
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-section::before {
+  content: '';
+  position: absolute; top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.4);
+}
+.hero-tagline {
+  position: relative;
+  color: #fff;
+  font-family: var(--ff-heading);
+  font-size: 3rem;
+  padding: 1rem 2rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 0.5rem;
+}
+
+.section--alt {
+  background: #fff;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+h2 {
+  font-family: var(--ff-heading);
+  color: var(--clr-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* Carousel overrides */
+.slick-dots li button:before {
+  color: var(--clr-secondary);
+}
+.slick-dots li.slick-active button:before {
+  color: var(--clr-primary);
 }
