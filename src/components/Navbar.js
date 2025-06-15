@@ -2,24 +2,30 @@ import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
   return (
-    <nav>
+    <nav className="nav--sticky">
       <div className="container">
-        <h2 style={{ color: '#fff', flexGrow: 1 }}>Wide Range Fresh</h2>
-        {['/', '/about', '/media'].map((path, i) => {
-          const label = ['Home','About','Media'][i];
-          return (
-            <NavLink
-              key={label}
-              to={path}
-              className={({ isActive }) =>
-                `nav-link${isActive ? ' active' : ''}`
-              }
-            >
-              {label}
-            </NavLink>
-          );
-        })}
+        <h2 className="brand">Wide Range Fresh</h2>
+        <ul className="nav-links">
+          {[
+            { to: '/',      label: 'Home' },
+            { to: '/about', label: 'About' },
+            { to: '/products', label: 'Products' },
+            { to: '/media',   label: 'Gallery' },
+            { to: '/contact', label: 'Contact' },
+          ].map(({to,label}) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                className={({isActive}) =>
+                  isActive ? 'nav-link active' : 'nav-link'
+                }
+              >
+                {label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
-  );
+);
 }
