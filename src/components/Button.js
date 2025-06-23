@@ -1,9 +1,19 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import './Button.css';
 
-export default function Button({ to, children, variant = 'primary', size = 'md' }) {
+export default function Button({ children, onClick, to, type = 'button', className = '' }) {
+  // If 'to' prop is provided, render as <a> for internal navigation or Link; 
+  // but for simplicity, we just allow passing href via to.
+  if (to) {
+    return (
+      <a href={to} className={`btn custom-btn ${className}`}>
+        {children}
+      </a>
+    );
+  }
   return (
-    <Link className={`btn btn--${variant} btn--${size}`} to={to}>
+    <button type={type} onClick={onClick} className={`btn custom-btn ${className}`}>
       {children}
-    </Link>
+    </button>
   );
 }

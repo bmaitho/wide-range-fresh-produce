@@ -1,0 +1,27 @@
+.about-page {
+    padding: var(--spacing-lg) 0;
+  }
+  .about-intro h1 {
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+  }
+  .about-intro p {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: var(--spacing-xl);
+  }
+  .about-section {
+    margin-bottom: var(--spacing-xl);
+  }
+  .about-section h2 {
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--clr-secondary);
+    display: inline-block;
+    padding-bottom: var(--spacing-xs);
+  }
+  .about-section ul {
+    margin-top: var(--spacing-sm);
+    margin-left: var(--spacing-md);
+    list-style: disc inside;
+  }
+  

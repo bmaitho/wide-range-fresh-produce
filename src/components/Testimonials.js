@@ -1,17 +1,31 @@
-const data = [
-  { name: 'John Mwangi', text: 'Their chili yield doubled my revenue!' },
-  { name: 'Grace Njeri', text: 'Reliable partner—always on time.' },
+import React from 'react';
+import './Testimonials.css';
+
+// Example data; replace with real testimonials as needed
+const testimonials = [
+  {
+    quote: "Working with Wide Range Fresh Produce Ltd transformed our supply chain. Quality is unmatched.",
+    author: "Major Distributor Co."
+  },
+  {
+    quote: "Our farmers appreciate the guaranteed off-take and training programs.",
+    author: "Local Farmer Group"
+  },
+  // add more...
 ];
 
 export default function Testimonials() {
   return (
-    <section className="container" style={{ padding: '4rem 0' }}>
-      <h2>What Farmers Say</h2>
-      {data.map((t, i) => (
-        <blockquote key={i} style={{ margin: '2rem 0', fontStyle: 'italic' }}>
-          “{t.text}” — <strong>{t.name}</strong>
-        </blockquote>
-      ))}
+    <section className="testimonials-section container">
+      <h2>What Our Partners Say</h2>
+      <div className="testimonials-list">
+        {testimonials.map((t, idx) => (
+          <div key={idx} className="testimonial-card">
+            <p className="testimonial-quote">“{t.quote}”</p>
+            <p className="testimonial-author">— {t.author}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

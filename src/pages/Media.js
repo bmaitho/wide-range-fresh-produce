@@ -1,43 +1,46 @@
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React from 'react';
+import './Media.css';
 
 export default function Media() {
-  // Replace these filenames with your real assets under public/assets/
-  const images = [
-    'field1.jpg',
-    'field2.jpg',
-    'field3.jpg',
-    'field4.jpg',
+  // Example: list of press links or embedded videos
+  const pressItems = [
+    { title: 'Article: How we revolutionize chili supply-chain', url: '#' },
+    { title: 'Interview on AgriTech Podcast', url: '#' },
+    // ...
+  ];
+  const videos = [
+    { title: 'Farm Tour', embedUrl: 'https://www.youtube.com/embed/...' },
+    // ...
   ];
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    centerMode: true,
-    centerPadding: '40px',
-    responsive: [
-      { breakpoint: 768, settings: { slidesToShow: 1 } }
-    ]
-  };
-
   return (
-    <section className="container section section--alt">
-      <h2>Our Fields in Action</h2>
-      <Slider {...settings}>
-        {images.map((file, i) => (
-          <div key={i}>
-            <img
-              src={`/assets/${file}`}
-              alt={`Chili field ${i+1}`}
-              className="hover-zoom"
-              style={{ borderRadius: '0.5rem' }}
-            />
+    <main className="media-page container">
+      <h1>Media & Press</h1>
+      <section className="press-section">
+        <h2>Press</h2>
+        <ul>
+          {pressItems.map((item, idx) => (
+            <li key={idx}><a href={item.url} target="_blank" rel="noreferrer">{item.title}</a></li>
+          ))}
+        </ul>
+      </section>
+      <section className="video-section">
+        <h2>Videos</h2>
+        {videos.map((v, idx) => (
+          <div key={idx} className="video-embed">
+            <iframe
+              width="100%"
+              height="315"
+              src={v.embedUrl}
+              title={v.title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+            <p>{v.title}</p>
           </div>
         ))}
-      </Slider>
-    </section>
+      </section>
+    </main>
   );
 }

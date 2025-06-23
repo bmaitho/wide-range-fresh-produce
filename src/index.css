@@ -1,145 +1,88 @@
+/* Global resets, variables, typography, spacing, basic element styles */
 :root {
-  --clr-primary:   #2f4f2f;
-  --clr-secondary: #8b4513;
-  --clr-accent:    #f9f5f1;
-  --ff-heading:    'Merriweather', serif;
-  --ff-body:       'Open Sans', sans-serif;
+  /* Color palette */
+  --clr-primary: #2f4f2f;     /* deep green */
+  --clr-secondary: #d35400;   /* chili/orange accent */
+  --clr-bg: #faf5ef;          /* light cream */
+  --clr-text-dark: #333;
+  --clr-white: #fff;
+
+  /* Typography */
+  --ff-heading: 'Merriweather', serif;
+  --ff-body: 'Open Sans', sans-serif;
+
+  /* Layout */
+  --navbar-height: 60px;
+
+  /* Spacing scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
 }
 
-body {
-  font-family: var(--ff-body);
-  background: var(--clr-accent);
-  color: #333;
-}
-
-/* NAVBAR */
-nav.nav--sticky {
-  background: var(--clr-primary);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  position: sticky; top: 0; z-index: 1000;
-}
-nav.nav--sticky .container {
-  display: flex; align-items: center;
-  justify-content: space-between; height: 4rem;
-}
-.nav-links {
-  display: flex; flex-wrap: wrap; gap: 1rem;
-  list-style: none;
-}
-.nav-link {
-  color: #f9f5f1; text-transform: uppercase;
-  font-weight: 600; padding: 0.5rem;
-  transition: background 0.3s, color 0.3s;
-  border-radius: 0.25rem;
-}
-.nav-link:hover,
-.nav-link.active {
-  background: var(--clr-secondary);
-  color: #fff;
-}
-
-/* HERO */
-.hero-section {
-  position: relative;
-  height: 70vh;
-  display: flex; align-items: center; justify-content: center;
-}
-.hero-section::before {
-  content: '';
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
-}
-.hero-tagline {
-  position: relative;
-  color: #fff;
-  font-family: var(--ff-heading);
-  font-size: 3rem;
-  padding: 1rem 2rem;
-  background: rgba(0,0,0,0.3);
-  border-radius: 0.5rem;
-}
-
-/* SECTIONS */
-.section {
-  padding: 4rem 0;
-}
-.section--alt {
-  background: #fff;
-}
-h2 {
-  font-family: var(--ff-heading);
-  color: var(--clr-primary);
-  margin-bottom: 1.5rem;
-}
-
-/* CARDS (Products) */
-.card-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-}
-.card {
-  background: #fff; border-radius: 0.5rem;
-  overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-.card:hover {
-  transform: translateY(-5px);
-}
-.card img {
-  width: 100%; height: 160px; object-fit: cover;
-}
-.card-info {
-  padding: 1rem;
-  display: flex; flex-direction: column; gap: 0.5rem;
-}
-
-/* BUTTONS */
-.btn {
-  display: inline-block; text-decoration: none;
-  border-radius: 0.3rem; font-weight: 600;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.btn--primary {
-  background: var(--clr-secondary);
-  color: #fff; padding: 0.75rem 1.5rem;
-}
-.btn--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-.btn--secondary {
-  background: var(--clr-primary);
-  color: #fff; padding: 0.5rem 1rem;
-}
-.btn--lg {
-  font-size: 1.125rem;
-}
-
-/* CONTACT FORM */
-.contact-form {
-  display: flex; flex-direction: column; gap: 1rem;
-  max-width: 500px; margin: 0 auto; padding: 0 1rem;
-}
-.contact-form input,
-.contact-form textarea {
-  width: 100%; padding: 0.75rem;
-  border: 1px solid #ccc; border-radius: 0.3rem;
+/* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+html, body, #root {
+  height: 100%;
+  background-color: var(--clr-bg);
+  color: var(--clr-text-dark);
+  font-family: var(--ff-body);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+button {
+  font-family: var(--ff-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+ul {
+  list-style: none;
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--ff-heading);
+  color: var(--clr-text-dark);
+}
+p, li {
+  font-family: var(--ff-body);
+  line-height: 1.6;
+}
 
-/* RESPONSIVE TWEAKS */
-@media (max-width: 600px) {
-  nav.nav--sticky .container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .nav-links {
-    flex-direction: column; width: 100%;
-  }
-  .nav-link {
-    width: 100%; padding: 0.75rem 0;
-    border-radius: 0;
-  }
+/* Utility classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Button base styling (if not using a Button component) */
+.btn {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--clr-secondary);
+  color: var(--clr-white);
+  border-radius: 4px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* For sections */
+section {
+  padding: var(--spacing-lg) 0;
 }

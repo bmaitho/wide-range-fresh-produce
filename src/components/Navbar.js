@@ -1,31 +1,32 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './Navbar.css';
+import logo from '../assets/logo.png'; // adjust if your logo file is named differently
 
 export default function Navbar() {
   return (
-    <nav className="nav--sticky">
-      <div className="container">
-        <h2 className="brand">Wide Range Fresh</h2>
-        <ul className="nav-links">
-          {[
-            { to: '/',      label: 'Home' },
-            { to: '/about', label: 'About' },
-            { to: '/products', label: 'Products' },
-            { to: '/media',   label: 'Gallery' },
-            { to: '/contact', label: 'Contact' },
-          ].map(({to,label}) => (
-            <li key={to}>
+    <nav className="navbar">
+      <div className="navbar-container container">
+        <NavLink to="/" className="navbar-logo">
+          {/* If you have a text logo instead, you can replace <img> with a <span> */}
+          <img src={logo} alt="Wide Range Fresh Produce Ltd" className="logo-img" />
+        </NavLink>
+        <ul className="navbar-menu">
+          {['Home','About','Products','Gallery','Contact'].map((item) => (
+            <li key={item} className="nav-item">
               <NavLink
-                to={to}
-                className={({isActive}) =>
+                to={ item === 'Home' ? '/' : `/${item.toLowerCase()}` }
+                className={({ isActive }) =>
                   isActive ? 'nav-link active' : 'nav-link'
                 }
               >
-                {label}
+                {item}
               </NavLink>
             </li>
           ))}
         </ul>
+        {/* For mobile: you can add a hamburger toggle here later */}
       </div>
     </nav>
-);
+  );
 }

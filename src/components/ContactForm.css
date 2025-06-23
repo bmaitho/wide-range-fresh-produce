@@ -1,0 +1,47 @@
+.contact-section {
+    padding: var(--spacing-lg) 0;
+  }
+  .contact-section h1 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+  }
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    margin-top: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+    font-family: var(--ff-body);
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: 2px solid var(--clr-secondary);
+  }
+  .required {
+    color: var(--clr-secondary);
+    margin-left: 2px;
+  }
+  .status-msg {
+    margin-top: var(--spacing-sm);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .status-msg.success {
+    color: green;
+  }
+  .status-msg.error {
+    color: red;
+  }
+  

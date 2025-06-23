@@ -1,0 +1,21 @@
+.howitworks-section {
+    padding: var(--spacing-lg) 0;
+  }
+  .howitworks-section h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-family: var(--ff-heading);
+  }
+  .howitworks-accordions {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .learn-more-inline {
+    color: var(--clr-secondary);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .learn-more-inline:hover {
+    text-decoration: underline;
+  }
+  
