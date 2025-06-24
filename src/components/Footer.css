@@ -33,7 +33,7 @@
   .footer-bottom {
     text-align: center;
     padding-top: var(--spacing-md);
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(209, 179, 179, 0.11);
     margin-top: var(--spacing-md);
     font-size: 0.9rem;
   }
