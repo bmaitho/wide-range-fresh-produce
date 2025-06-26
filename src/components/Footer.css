@@ -1,46 +1,82 @@
+/* Footer wrapper */
 .site-footer {
     background-color: var(--clr-primary);
     color: var(--clr-white);
     padding: var(--spacing-lg) 0;
   }
+  
+  /* Use a 3-column grid for desktop, auto-stack on mobile */
   .footer-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+    /* center all content in each grid cell */
+    text-align: center;
+    align-items: start;
   }
-  .footer-about,
-  .footer-links,
-  .footer-contact {
-    flex: 1 1 200px;
-  }
+  
+  /* Section headings */
   .footer-about h4,
   .footer-links h4,
   .footer-contact h4 {
     margin-bottom: var(--spacing-sm);
     font-family: var(--ff-heading);
+    color: var(--clr-white);
   }
+  
+  /* About / Contact blocks: center text */
+  .footer-about p,
+  .footer-contact p {
+    margin: 0.25rem 0;
+    line-height: 1.5;
+  }
+  
+  /* Quick Links: two columns again */
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* center the grid within the cell */
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-xs) var(--spacing-md);
+  }
+  
+  /* Center each link text too */
   .footer-links ul li {
-    margin-bottom: var(--spacing-xs);
+    margin: 0;
   }
-  .footer-links ul li a {
+  
+  /* Link styles */
+  .footer-links ul li a,
+  .footer-contact a {
     color: var(--clr-white);
     text-decoration: none;
     transition: color 0.2s;
   }
-  .footer-links ul li a:hover {
+  .footer-links ul li a:hover,
+  .footer-contact a:hover {
     color: var(--clr-secondary);
   }
+  
+  /* Bottom bar */
   .footer-bottom {
     text-align: center;
     padding-top: var(--spacing-md);
-    border-top: 1px solid rgba(209, 179, 179, 0.11);
+    border-top: 1px solid rgba(255,255,255,0.2);
     margin-top: var(--spacing-md);
     font-size: 0.9rem;
+    opacity: 0.9;
   }
+  
+  /* Mobile: single-column grid, keep center text */
   @media (max-width: 768px) {
     .footer-container {
-      flex-direction: column;
-      text-align: center;
+      grid-template-columns: 1fr;
+    }
+    .footer-links ul {
+      grid-template-columns: 1fr;
     }
   }
   

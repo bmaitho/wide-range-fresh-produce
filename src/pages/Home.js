@@ -6,7 +6,7 @@ import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
 import './Home.css';
 
-// Option A: Inline require.context
+// Option A: Inline require.context to import gallery images
 function importGalleryImages() {
   let context;
   try {
@@ -15,7 +15,6 @@ function importGalleryImages() {
     console.warn('No assets found for gallery import:', err);
     return [];
   }
-  // context.keys() e.g. ['./logo.png', './chili-hero.jpg', './Byadgi Chilli Farm.jpeg', ...]
   const all = context.keys().map((key) => {
     const src = context(key);
     return { key, src };
@@ -23,7 +22,7 @@ function importGalleryImages() {
   // Filter out non-gallery images
   const filtered = all.filter(({ key }) => {
     const lower = key.toLowerCase();
-    // Exclude logo
+    // Exclude logo files
     if (lower.includes('logo')) return false;
     // Exclude hero images
     if (lower.includes('chili-hero') || lower.includes('chilli-hero') || lower.includes('hero')) return false;
@@ -46,43 +45,49 @@ export default function Home() {
       <Hero />
 
       {/* Feature teaser cards */}
-      <section className="homepage-features container">
+      <section className="homepage-features container section">
         <div className="feature-card">
           <h3>Our Farming Model</h3>
-          <p>Partnering directly with local chili farmers to ensure premium quality & guaranteed offtake.</p>
-          <Link to="/about#farming-model" className="learn-more-inline">
+          <p>
+            Partnering directly with local chili farmers to ensure premium quality & guaranteed offtake.
+          </p>
+          <Link to="/about#farming-model" className="feature-card__cta">
             Learn More →
           </Link>
         </div>
         <div className="feature-card">
           <h3>Our Varieties</h3>
-          <p>From mild to fiery, explore our range of chili pepper types suited to varied markets.</p>
-          <Link to="/products" className="learn-more-inline">
+          <p>
+            From mild to fiery, explore our range of chili pepper types suited to varied markets.
+          </p>
+          <Link to="/products" className="feature-card__cta">
             Explore Varieties →
           </Link>
         </div>
         <div className="feature-card">
           <h3>Quality Assurance</h3>
-          <p>Rigorous inspections, lab testing, and continuous training programs.</p>
-          <Link to="/about#quality" className="learn-more-inline">
+          <p>
+            Rigorous inspections, lab testing, and continuous training programs.
+          </p>
+          <Link to="/about#quality" className="feature-card__cta">
             See Details →
           </Link>
         </div>
       </section>
 
-      {/* How It Works accordions */}
+      {/* How It Works accordions (teaser or full depending on component) */}
       <HowItWorks />
 
       {/* Gallery preview */}
       {previewImages.length > 0 && (
-        <section className="homepage-gallery-preview container">
+        <section className="homepage-gallery-preview container section">
           <h2>Gallery Preview</h2>
           <div className="gallery-preview-grid">
             {previewImages.map((src, idx) => (
               <div key={idx} className="gallery-preview-item">
-                <img 
-                  src={src} 
-                  alt={`Gallery preview ${idx + 1}`} 
+                <img
+                  src={src}
+                  alt={`Gallery preview ${idx + 1}`}
                   loading="lazy"
                 />
               </div>
@@ -98,10 +103,10 @@ export default function Home() {
       <Testimonials />
 
       {/* Call to action */}
-      <section className="homepage-contact-cta container" id="contact-cta">
+      <section className="homepage-contact-cta container section" id="contact-cta">
         <h2>Ready to Partner?</h2>
         <p>Contact us today to discuss collaboration or orders.</p>
-        <Link to="/contact" className="btn">
+        <Link to="/contact" className="btn homepage-contact-cta__btn">
           Contact Us
         </Link>
       </section>

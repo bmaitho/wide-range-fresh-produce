@@ -13,7 +13,7 @@ export default function Hero() {
         <h2 className="company-name">Wide Range Fresh Produce Ltd</h2>
         <h1 className="hero-title">Your Trusted Chili Farming Partner</h1>
         <p className="hero-subtitle">Guaranteed quality. Consistent off-take. Sustainable growth.</p>
-        <a href="#contact" className="hero-cta btn">Get in Touch</a>
+        <a href="contact" className="hero-cta btn">Get in Touch</a>
       </div>
     </section>
   );

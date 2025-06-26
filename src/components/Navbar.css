@@ -12,105 +12,108 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
   
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: var(--spacing-md);
-    padding-right: var(--spacing-md);
-  }
-  
-  .navbar-logo img {
-    height: 40px;
-    width: auto;
-  }
-  
-  .navbar-menu {
-    display: flex;
-    gap: var(--spacing-lg);
-  }
-  
-  .nav-item {
-    list-style: none;
-  }
-  
-  .nav-link {
-    color: var(--clr-white);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    padding: 0.5rem 0;
-    transition: color 0.2s;
-  }
-  
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--clr-secondary);
-    transition: width 0.3s;
-  }
-  
-  .nav-link:hover {
-    color: var(--clr-secondary);
-  }
-  .nav-link:hover::after {
-    width: 100%;
-  }
-  
-  .nav-link.active {
-    color: var(--clr-secondary);
-  }
-  .nav-link.active::after {
-    width: 100%;
-  }
-  
-  /* Hamburger icon for mobile */
+  /* src/components/Navbar.css */
+
+/* ... existing variables, .navbar, etc. ... */
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  /* Remove justify-content: space-between if present; instead use margin auto on logo/menu */
+}
+
+/* Force logo left */
+.navbar-logo {
+  /* ensure the logo container pushes other items right */
+  margin-right: auto;
+}
+.navbar-logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Menu pushed to right */
+.navbar-menu {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-left: auto;
+}
+
+/* Hamburger remains as before */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: var(--clr-white);
+  border-radius: 2px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
   .hamburger {
+    display: flex;
+  }
+  .navbar-menu {
     display: none;
+    position: absolute;
+    top: var(--navbar-height);
+    right: 0;
+    background-color: var(--clr-primary);
     flex-direction: column;
-    justify-content: space-between;
-    width: 25px;
-    height: 18px;
-    cursor: pointer;
+    width: 200px;
+    padding: var(--spacing-md);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
-  .hamburger span {
-    display: block;
-    height: 3px;
-    background: var(--clr-white);
-    border-radius: 2px;
+  .navbar-menu.open {
+    display: flex;
   }
-  
-  /* Mobile menu behavior */
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-    }
-    .navbar-menu {
-      display: none;
-      position: absolute;
-      top: var(--navbar-height);
-      right: 0;
-      background-color: var(--clr-primary);
-      flex-direction: column;
-      width: 200px;
-      padding: var(--spacing-md);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    .navbar-menu.open {
-      display: flex;
-    }
-    .navbar-menu .nav-item {
-      margin-bottom: var(--spacing-sm);
-    }
-    .navbar-menu .nav-link {
-      padding: 0.5rem 0;
-    }
+  .navbar-menu .nav-item {
+    margin-bottom: var(--spacing-sm);
   }
-  
+  .navbar-menu .nav-link {
+    padding: 0.5rem 0;
+  }
+}
+
+/* NavLink styling remains the same */
+.nav-link {
+  color: var(--clr-white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--clr-secondary);
+  transition: width 0.3s;
+}
+.nav-link:hover {
+  color: var(--clr-secondary);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+.nav-link.active {
+  color: var(--clr-secondary);
+}
+.nav-link.active::after {
+  width: 100%;
+}
