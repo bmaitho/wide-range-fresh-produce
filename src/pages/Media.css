@@ -1,11 +1,91 @@
 /* src/pages/Media.css */
-/* Add styles for Media page as needed */
-.media-page {
-    padding: var(--spacing-lg) 0;
-  }
-  .media-page h1 {
+
+/* Page title */
+.media-page h1 {
     text-align: center;
+    font-family: var(--ff-heading);
+    color: var(--clr-primary);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  /* ---- Farm Journal ---- */
+  .journal-section h2 {
+    font-family: var(--ff-heading);
+    color: var(--clr-primary);
     margin-bottom: var(--spacing-md);
   }
-  /* more styles when you add content */
+  .journal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+  .journal-card {
+    background-color: var(--clr-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  .journal-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .journal-content {
+    padding: var(--spacing-md);
+    flex: 1;
+  }
+  .journal-content time {
+    font-size: 0.85rem;
+    color: #666;
+  }
+  .journal-content h3 {
+    margin: var(--spacing-sm) 0;
+    font-size: 1.2rem;
+    color: var(--clr-secondary);
+  }
+  .journal-content p {
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  /* ---- Video Tours ---- */
+  .videos-section h2 {
+    font-family: var(--ff-heading);
+    color: var(--clr-primary);
+    margin-bottom: var(--spacing-md);
+  }
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+  .video-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .video-wrapper iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .video-title {
+    margin-top: var(--spacing-sm);
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Responsive spacing */
+  @media (max-width: 600px) {
+    .journal-grid,
+    .videos-grid {
+      gap: var(--spacing-md);
+    }
+  }
   

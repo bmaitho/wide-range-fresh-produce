@@ -52,6 +52,17 @@ html, body, #root {
   padding-bottom: var(--spacing-lg);
 }
 
+/* App.css */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1; /* take all available space, pushing footer down */
+}
+
 /* Buttons */
 .btn {
   display: inline-block;

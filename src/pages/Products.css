@@ -1,16 +1,29 @@
-.products-page {
+/* Utility spacing for any .section */
+.section {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+  }
+  
+  /* PRODUCTS PAGE BASE */
+  .products-page {
     padding: var(--spacing-lg) 0;
   }
+  
   .products-page h1 {
     text-align: center;
     margin-bottom: var(--spacing-md);
+    font-family: var(--ff-heading);
+    color: var(--clr-primary);
   }
+  
+  /* PRODUCT CARDS GRID */
   .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
   }
+  
   .product-card {
     background-color: var(--clr-white);
     border-radius: 6px;
@@ -19,49 +32,164 @@
     display: flex;
     flex-direction: column;
   }
+  
   .product-card img {
     width: 100%;
     height: 160px;
     object-fit: cover;
   }
+  
   .product-card h3 {
     margin: var(--spacing-sm);
+    color: var(--clr-primary);
   }
+  
   .product-card p {
     margin: var(--spacing-xs) var(--spacing-sm);
+    color: #333;
   }
-  .harvest-section {
+  
+  /* HARVEST SCHEDULE */
+/* Harvest Schedule Card */
+.harvest-section {
     margin-bottom: var(--spacing-xl);
+    /* Wrap in a card */
+    background-color: var(--clr-white);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   }
+  
   .harvest-section h2 {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
     text-align: center;
+    font-family: var(--ff-heading);
+    color: var(--clr-primary);
+    font-size: 1.75rem;
   }
+  
+  /* Table styling */
   .harvest-table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    max-width: 600px;
+    border-collapse: separate;        /* allow rounded corners */
+    border-spacing: 0;
+    table-layout: fixed;
   }
+  
   .harvest-table th,
   .harvest-table td {
-    border: 1px solid rgba(0,0,0,0.1);
-    padding: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
     text-align: left;
+    color: #333;
   }
+  
+  /* Header row */
+  .harvest-table thead th {
+    background-color: var(--clr-bg);
+    color: var(--clr-primary);
+    font-weight: bold;
+    font-size: 1rem;
+    border-bottom: 2px solid var(--clr-primary);
+  }
+  
+  /* Rounded corners on table container */
+  .harvest-table thead th:first-child {
+    border-top-left-radius: 6px;
+  }
+  .harvest-table thead th:last-child {
+    border-top-right-radius: 6px;
+  }
+  .harvest-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 6px;
+  }
+  .harvest-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 6px;
+  }
+  
+  /* Body rows */
+  .harvest-table tbody tr {
+    background-color: #fafafa;
+  }
+  .harvest-table tbody tr:nth-child(even) {
+    background-color: var(--clr-bg);
+  }
+  
+  /* Light cell borders */
+  .harvest-table th + th,
+  .harvest-table td + td {
+    border-left: 1px solid rgba(0,0,0,0.1);
+  }
+  .harvest-table tbody tr + tr td {
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  
+  /* ---------- ORDER PROCESS STEP BAR ---------- */
+  
   .order-process-section {
     margin-bottom: var(--spacing-xl);
   }
+  
   .order-process-section h2 {
-    margin-bottom: var(--spacing-sm);
     text-align: center;
-  }
-  .order-process-section ol {
-    max-width: 600px;
-    margin: 0 auto;
-    padding-left: var(--spacing-md);
-  }
-  .order-process-section ol li {
     margin-bottom: var(--spacing-sm);
+    font-family: var(--ff-heading);
+    color: var(--clr-primary);
+  }
+  
+ /* ---------- ORDER PROCESS STEP BAR (BIGGER) ---------- */
+
+.order-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* increase gap between steps */
+    gap: 3rem; /* was var(--spacing-lg) */
+    margin-top: var(--spacing-md);
+  }
+  
+  .order-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .order-step__circle {
+    width: 60px;           /* was 36px */
+    height: 60px;          /* was 36px */
+    border-radius: 50%;
+    background-color: var(--clr-secondary);
+    color: var(--clr-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;     /* was 1rem */
+  }
+  
+  .order-step__label {
+    margin-top: var(--spacing-sm);
+    max-width: 200px;      /* give a bit more room */
+    text-align: center;
+    font-size: 1.1rem;     /* was 0.9rem */
+    line-height: 1.4;
+    color: #333;
+  }
+  
+  /* Connector line thickness and length */
+  .order-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(-1 * 3rem / 2); /* match new gap */
+    width: 3rem;                /* match new gap */
+    height: 3px;                /* a bit thicker */
+    background-color: var(--clr-secondary);
+    transform: translateY(-50%);
   }
   

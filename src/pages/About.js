@@ -1,55 +1,89 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './About.css';
 
+const sections = [
+  {
+    key: 'farming',
+    title: 'Our Farming Model',
+    items: [
+      'Direct partnerships with local chili farmers.',
+      'End-to-end management: from seedling to shipment.',
+      'Strict quality controls at every step.',
+      'Farmer support programs and training.',
+    ],
+  },
+  {
+    key: 'quality',
+    title: 'Quality Assurance',
+    items: [
+      'On-site inspections every 2 weeks.',
+      'Soil & lab testing for each batch.',
+      'Batch tracking for traceability.',
+      'Continuous improvement via feedback loops.',
+    ],
+  },
+  {
+    key: 'market',
+    title: 'Guaranteed Market',
+    items: [
+      'Contracts with major distributors.',
+      'Dynamic harvest scheduling aligned to demand cycles.',
+      'Risk-sharing mechanisms to protect farmers.',
+    ],
+  },
+  {
+    key: 'sustainability',
+    title: 'Sustainability & Impact',
+    items: [
+      'Environmentally responsible farming practices.',
+      'Empowering local communities through fair pricing.',
+      'Reduction of post-harvest losses via efficient logistics.',
+    ],
+  },
+];
+
 export default function About() {
+  const [openKey, setOpenKey] = useState(null);
+
+  const toggle = (key) => {
+    setOpenKey(openKey === key ? null : key);
+  };
+
   return (
-    <main className="about-page container">
-      <section className="about-intro">
-        <h1>About Wide Range Fresh Produce Ltd</h1>
-        <p>
-          Wide Range Fresh Produce Ltd is a Kenyan agribusiness committed to professional chili farming. 
-          Our founder has years of experience in chili cultivation and leads a dedicated team focused 
-          on helping farmers across the country access consistent markets.
-        </p>
-      </section>
+    <main className="about-page container section">
+      <h1>About Wide Range Fresh Produce Ltd</h1>
+      <p className="about-intro">
+        Wide Range Fresh Produce Ltd is a Kenyan agribusiness committed to
+        professional chili farming. Our founder has years of experience in chili
+        cultivation and leads a dedicated team focused on helping farmers across
+        the country access consistent markets.
+      </p>
 
-      <section id="farming-model" className="about-section">
-        <h2>Our Farming Model</h2>
-        <ul>
-          <li>Direct partnerships with local chili farmers.</li>
-          <li>End-to-end management: from seedling to shipment.</li>
-          <li>Strict quality controls at every step.</li>
-          <li>Farmer support programs and training.</li>
-        </ul>
-      </section>
+      <div className="accordion">
+        {sections.map(({ key, title, items }) => (
+          <div key={key} className="accordion-item">
+            <button
+              className={`accordion-header ${openKey === key ? 'open' : ''}`}
+              onClick={() => toggle(key)}
+            >
+              {title}
+              <span className="accordion-icon">
+                {openKey === key ? '−' : '+'}
+              </span>
+            </button>
 
-      <section id="quality" className="about-section">
-        <h2>Quality Assurance</h2>
-        <ul>
-          <li>On-site inspections every 2 weeks.</li>
-          <li>Soil & lab testing for each batch.</li>
-          <li>Batch tracking for traceability.</li>
-          <li>Continuous improvement via feedback loops.</li>
-        </ul>
-      </section>
-
-      <section id="market" className="about-section">
-        <h2>Guaranteed Market</h2>
-        <ul>
-          <li>Contracts with major distributors.</li>
-          <li>Dynamic harvest scheduling aligned to demand cycles.</li>
-          <li>Risk-sharing mechanisms to protect farmers.</li>
-        </ul>
-      </section>
-
-      <section id="sustainability" className="about-section">
-        <h2>Sustainability & Impact</h2>
-        <ul>
-          <li>Environmentally responsible farming practices.</li>
-          <li>Empowering local communities through fair pricing.</li>
-          <li>Reduction of post-harvest losses via efficient logistics.</li>
-        </ul>
-      </section>
+            <div
+              className={`accordion-body ${openKey === key ? 'open' : ''}`}
+            >
+              <ul>
+                {items.map((txt, i) => (
+                  <li key={i}>{txt}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }

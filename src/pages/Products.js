@@ -20,15 +20,23 @@ const productVarieties = [
     image: require('../assets/habanero.jpg'),
     description: 'Intense heat for specialty markets.',
     heatLevel: 'Very Hot'
-  },
-  // add more as needed
+  }
 ];
 
 // Example harvest schedule data
 const harvestSchedule = [
   { variety: 'Mild Red Chili', season: 'March - May' },
   { variety: 'Hot Cayenne', season: 'June - August' },
-  { variety: 'Habanero', season: 'September - November' },
+  { variety: 'Habanero', season: 'September - November' }
+];
+
+// Steps for order process
+const orderSteps = [
+  'Inquiry via contact form or email.',
+  'Discuss volume, timing, and logistics.',
+  'Agreement and contract.',
+  'Harvest coordination and quality checks.',
+  'Shipment and payment settlement.'
 ];
 
 export default function Products() {
@@ -46,7 +54,7 @@ export default function Products() {
         ))}
       </div>
 
-      <section id="harvest-schedule" className="harvest-section">
+      <section id="harvest-schedule" className="harvest-section section">
         <h2>Harvest Schedule</h2>
         <table className="harvest-table">
           <thead>
@@ -66,15 +74,16 @@ export default function Products() {
         </table>
       </section>
 
-      <section className="order-process-section">
+      <section className="order-process-section section">
         <h2>Order Process</h2>
-        <ol>
-          <li>Inquiry via contact form or email.</li>
-          <li>Discuss volume, timing, and logistics.</li>
-          <li>Agreement & contract.</li>
-          <li>Harvest coordination and quality checks.</li>
-          <li>Shipment and payment settlement.</li>
-        </ol>
+        <div className="order-steps">
+          {orderSteps.map((label, idx) => (
+            <div key={idx} className="order-step">
+              <div className="order-step__circle">{idx + 1}</div>
+              <div className="order-step__label">{label}</div>
+            </div>
+          ))}
+        </div>
       </section>
     </main>
   );
