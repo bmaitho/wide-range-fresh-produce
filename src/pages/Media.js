@@ -13,8 +13,8 @@ const journalEntries = [
     date: '2025-05-01',
     title: 'New Greenhouse Installed',
     summary:
-      'Our new 1,000 sq m greenhouse is now operational—enabling year-round seedling production and tighter climate control.',
-    image: require('../assets/Country side life, home grown food.jpeg'),
+      'Our new greenhouse is now up and running, boosting seedling production and year-round cultivation',
+      image: require('../assets/A_photograph_captures_the_interior_of_a_greenhouse.png'),
   },
   // …add more entries here
 ];
