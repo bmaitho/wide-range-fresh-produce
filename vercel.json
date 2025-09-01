@@ -1,0 +1,13 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/suspended.html" }
+  ],
+  "headers": [
+    {
+      "source": "/suspended.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
+  ]
+}
