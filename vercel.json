@@ -1,6 +1,9 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/suspended.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/suspended.html"
+    }
   ],
   "headers": [
     {
